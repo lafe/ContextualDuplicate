@@ -6,33 +6,38 @@ import * as vscode from 'vscode';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerTextEditorCommand('lafe.duplicateCode', (editor, edit) => {
-        var selection = editor.selection;
-        if (selection.isEmpty) {
-            //Duplicate line
-            const text = editor.document.lineAt(selection.start.line).text;
-            edit.insert(new vscode.Position(selection.start.line + 1, 0), `${text}\r\n`);
-        } else {
-            //Duplicate fragment
-            const text = editor.document.getText(selection);
-            edit.replace(selection.end, text);
-
-            //Select new part
-            // const activeEditor = vscode.window.activeTextEditor;
-            const newSelectionStart = editor.selections[0].start.translate(0, text.length);
-            const newSelectionEnd = editor.selections[0].end.translate(0, text.length);
-            const newSelection = new vscode.Selection(newSelectionStart, newSelectionEnd);
-            editor.selections[0] = newSelection;
-        }
-    });
-
-    context.subscriptions.push(disposable);
+    let duplicateCodeCommand = vscode.commands.registerCommand('lafe.duplicateCode', duplicateCode);
+    context.subscriptions.push(duplicateCodeCommand);
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {
+function duplicateCode() {
+    let editor = vscode.window.activeTextEditor;
+    let document = editor.document;
+    let selections = editor.selections;
+
+    let newSelections: vscode.Selection[] = [];
+
+    for (let selection of selections) {
+        if (selection.isEmpty) {
+            //Duplicate line
+            editor.edit(textEdit => {
+                const text = editor.document.lineAt(selection.start.line).text;
+                textEdit.replace(new vscode.Position(selection.start.line + 1, 0), `${text}\r\n`);
+            });
+        } else {
+            var replac
+            const text = editor.document.getText(selection);
+            editor.edit(textEdit => {
+                //Duplicate fragment
+                textEdit.replace(selection.end, text);
+
+                const newSelectionStart = selection.start.translate(0, text.length);
+                const newSelectionEnd = selection.end.translate(0, text.length);
+                const newSelection = new vscode.Selection(newSelectionStart, newSelectionEnd);
+                newSelections.push(newSelection);
+            });
+        }
+
+        editor.selections = newSelections;
+    }
 }

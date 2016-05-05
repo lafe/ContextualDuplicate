@@ -11,13 +11,17 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:lafe.duplicateCode"
+        "onCommand:lafe.duplicateCode",
+        "onCommand:lafe.getPosition"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
             "command": "lafe.duplicateCode",
             "title": "Duplicate code"
+        }, {
+            "command": "lafe.getPosition",
+            "title": "Get position"
         }]
     },
     "scripts": {
