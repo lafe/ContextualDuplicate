@@ -2,7 +2,7 @@
     "name": "contextualduplicate",
     "displayName": "Contextual Duplicate",
     "description": "This extension duplicates text based on the context. If text is selected, only the selected text will be duplicated. Otherwise, the complete line will be duplicated.",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "Lars Fernhomberg",
     "engines": {
         "vscode": "^1.0.0"
@@ -11,17 +11,13 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:lafe.duplicateCode",
-        "onCommand:lafe.getPosition"
+        "onCommand:lafe.duplicateCode"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
             "command": "lafe.duplicateCode",
             "title": "Duplicate code"
-        }, {
-            "command": "lafe.getPosition",
-            "title": "Get position"
         }]
     },
     "scripts": {
