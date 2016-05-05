@@ -23,6 +23,8 @@ function duplicateCode() {
             editor.edit(textEdit => {
                 const text = editor.document.lineAt(selection.start.line).text;
                 textEdit.replace(new vscode.Position(selection.start.line + 1, 0), `${text}\r\n`);
+                // const newSelection = new vscode.Selection(selection.start.line + 1, 0, selection.start.line + 1, text.length);
+                // newSelections.push(newSelection);
             });
         } else {
             var replac
@@ -38,6 +40,8 @@ function duplicateCode() {
             });
         }
 
-        editor.selections = newSelections;
+        if (newSelections.length > 0) {
+            editor.selections = newSelections;
+        }
     }
 }

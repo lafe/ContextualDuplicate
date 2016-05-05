@@ -1,13 +1,4 @@
-# README
-## This is the README for your extension "contextualduplicate"
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+# Contextual Duplicate
+This is an extension for [Visual Studio Code](https://code.visualstudio.com/) that provides Text Duplication features:
+* If text is selected, the text will be copied to the right and will also be selected
+* If no text is selected than the line will be duplicated
