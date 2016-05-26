@@ -24,7 +24,7 @@ You can also register the extension on another shortcut. To enable the shortcut 
     "when": "editorTextFocus"
 }
 ```
-Details on how to change the keybindings can be fount in the [Visual Studio Code help pages](https://code.visualstudio.com/docs/customization/keybindings#_customizing-shortcuts).
+Details on how to change the keybindings can be found in the [Visual Studio Code help pages](https://code.visualstudio.com/docs/customization/keybindings#_customizing-shortcuts).
 
 ##Source Code
 The source code can be found at [https://github.com/lafe/ContextualDuplicate](https://github.com/lafe/ContextualDuplicate).
