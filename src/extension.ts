@@ -23,9 +23,7 @@ function duplicateCode() {
             //Duplicate line
             editor.edit(textEdit => {
                 const text = editor.document.lineAt(selection.start.line).text;
-                textEdit.replace(new vscode.Position(selection.start.line + 1, 0), `${text}\r\n`);
-                // const newSelection = new vscode.Selection(selection.start.line + 1, 0, selection.start.line + 1, text.length);
-                // newSelections.push(newSelection);
+                textEdit.insert(new vscode.Position(selection.start.line, text.length), `\r\n${text}`);
             });
         } else {
             const text = editor.document.getText(selection);
