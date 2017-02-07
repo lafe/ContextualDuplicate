@@ -13,8 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 function duplicateCode() {
     let editor = vscode.window.activeTextEditor;
     let document = editor.document;
-    let selections = editor.selections;
-    
+    let selections: any = editor.selections;
+
     let newSelections: vscode.Selection[] = [];
 
     for (let i = 0; i < selections.length; i++) {
